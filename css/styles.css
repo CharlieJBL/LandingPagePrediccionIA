@@ -1,0 +1,1111 @@
+/* ========== RESET Y VARIABLES ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+:root {
+    --bg-primary: #f8fafc;
+    --bg-card: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --border: #e2e8f0;
+    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+    --shadow-hover: 0 25px 30px -12px rgba(0, 0, 0, 0.15);
+    --navbar-bg: rgba(255, 255, 255, 0.85);
+    --footer-bg: #0f172a;
+    --footer-text: #94a3b8;
+    --img-bg: #f1f5f9;
+}
+
+body.dark {
+    --bg-primary: #0f172a;
+    --bg-card: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border: #334155;
+    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 25px 30px -12px rgba(0, 0, 0, 0.5);
+    --navbar-bg: rgba(15, 23, 42, 0.85);
+    --img-bg: #334155;
+}
+
+body {
+    font-family: system-ui, 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    scroll-behavior: smooth;
+    padding-top: 80px;
+}
+
+/* ========== NAVBAR GLASSMORPHISM ========== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--navbar-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0.8rem 2rem;
+}
+
+.nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.logo:hover {
+    transform: rotate(-5deg) scale(1.05);
+}
+
+.logo-icon {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #84cc16, #3b82f6);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo-text {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    background: var(--bg-card);
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.search-wrapper:focus-within {
+    transform: scaleX(1.05);
+    box-shadow: 0 0 0 3px rgba(132, 204, 22, 0.3);
+    border-color: #84cc16;
+}
+
+.search-input {
+    padding: 0.6rem 1rem;
+    border: none;
+    background: transparent;
+    font-size: 0.9rem;
+    width: 200px;
+    outline: none;
+    color: var(--text-primary);
+}
+
+.search-btn {
+    background: #0f172a;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+body.dark .search-btn {
+    background: #84cc16;
+    color: #0f172a;
+}
+
+.search-btn:hover {
+    background: #84cc16;
+    color: #0f172a;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nav-links a:hover {
+    color: #84cc16;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #84cc16;
+    transition: 0.3s;
+    transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.cart-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    color: var(--text-primary);
+}
+
+.cart-count {
+    background: #84cc16;
+    color: #0f172a;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* ========== CARRUSEL ========== */
+.hero {
+    max-width: 1280px;
+    margin: 0 auto 3rem;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    aspect-ratio: 21 / 9;
+}
+
+.carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    animation: fadeScale 0.6s ease;
+}
+
+.carousel-slide.active {
+    display: block;
+}
+
+@keyframes fadeScale {
+    0% { opacity: 0; transform: scale(1.02); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* ========== CONTENEDOR GENERAL ========== */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 2rem 0 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+}
+
+/* ========== PRODUCTOS GRID ========== */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+    margin-bottom: 2rem;
+}
+
+.product-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s;
+    box-shadow: var(--shadow);
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card-img {
+    background: var(--img-bg);
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-img img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    transition: transform 0.3s;
+}
+
+.product-card:hover .card-img img {
+    transform: scale(1.1);
+}
+
+.offer-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #f59e0b;
+    color: white;
+    font-weight: bold;
+    padding: 0.2rem 0.7rem;
+    border-radius: 30px;
+    font-size: 0.7rem;
+}
+
+.card-content {
+    padding: 1rem;
+}
+
+.product-title {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin: 0.4rem 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+}
+
+.old-price {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    text-decoration: line-through;
+    margin-right: 0.5rem;
+}
+
+.discount-price {
+    color: #ef4444;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.add-cart {
+    width: 100%;
+    background: transparent;
+    border: 2px solid #84cc16;
+    border-radius: 50px;
+    padding: 0.6rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    color: #84cc16;
+}
+
+.add-cart:hover {
+    background: #84cc16;
+    color: #0f172a;
+}
+
+/* ========== NUEVA SECCIÓN: PREDICCIÓN IA (VISTA PREVIA) ========== */
+.ia-preview-section {
+    margin: 3rem 0;
+}
+
+.ia-preview-card {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    border-radius: 30px;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    color: white;
+}
+
+body.dark .ia-preview-card {
+    background: linear-gradient(135deg, #1e293b, #334155);
+}
+
+.ia-info {
+    flex: 1;
+    min-width: 250px;
+}
+
+.ia-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.ia-info p {
+    color: #cbd5e1;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.ia-features {
+    list-style: none;
+    margin: 1.5rem 0;
+}
+
+.ia-features li {
+    margin: 0.5rem 0;
+    color: #84cc16;
+}
+
+.ia-btn {
+    background: #84cc16;
+    color: #0f172a;
+    border: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.ia-btn:hover {
+    background: #65a30d;
+    transform: scale(1.02);
+}
+
+.ia-graph-preview {
+    flex: 1;
+    min-width: 280px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 1rem;
+}
+
+.fake-graph {
+    text-align: center;
+}
+
+.graph-title {
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.graph-bars {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1rem;
+    height: 150px;
+}
+
+.bar {
+    width: 50px;
+    background: #84cc16;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    transition: height 0.3s;
+}
+
+.bar span {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    color: #84cc16;
+}
+
+.graph-labels {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    font-size: 0.7rem;
+}
+
+.graph-labels span {
+    width: 50px;
+    text-align: center;
+}
+
+/* ========== NUEVA SECCIÓN: BENEFICIOS ========== */
+.benefits-section {
+    margin: 3rem 0;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.benefit-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1.8rem;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+}
+
+.benefit-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.benefit-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.benefit-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ========== NUEVA SECCIÓN: TESTIMONIOS ========== */
+.testimonials-section {
+    margin: 3rem 0;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.testimonial-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1.5rem;
+}
+
+.stars {
+    color: #f59e0b;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.testimonial-card p {
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0.8rem 0;
+    font-style: italic;
+}
+
+.client {
+    font-weight: 600;
+    margin-top: 1rem;
+    color: var(--text-primary);
+}
+
+/* ========== NUEVA SECCIÓN: NEWSLETTER ========== */
+.newsletter-section {
+    margin: 3rem 0;
+}
+
+.newsletter-card {
+    background: linear-gradient(135deg, #84cc16, #65a30d);
+    border-radius: 30px;
+    padding: 2.5rem;
+    text-align: center;
+    color: #0f172a;
+}
+
+.newsletter-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.newsletter-card p {
+    margin-bottom: 1.5rem;
+}
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.newsletter-form input {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    width: 280px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.newsletter-form button {
+    background: #0f172a;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.newsletter-form button:hover {
+    background: #1e293b;
+    transform: scale(1.02);
+}
+
+/* ========== FOOTER ========== */
+footer {
+    background: var(--footer-bg);
+    margin-top: 4rem;
+    padding: 2rem 2rem 1rem;
+    color: var(--footer-text);
+}
+
+.footer-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: var(--footer-text);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #84cc16;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 2rem;
+    font-size: 0.8rem;
+    border-top: 1px solid #334155;
+    margin-top: 2rem;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 850px) {
+    .nav-container {
+        flex-direction: column;
+    }
+    
+    .search-input {
+        width: 150px;
+    }
+    
+    body {
+        padding-top: 130px;
+    }
+    
+    .ia-preview-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .graph-bars {
+        gap: 0.5rem;
+    }
+    
+    .bar {
+        width: 35px;
+    }
+    
+    .graph-labels span {
+        width: 35px;
+        font-size: 0.6rem;
+    }
+    
+    .newsletter-form input {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 550px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .nav-links {
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .hero {
+        border-radius: 12px;
+        margin: 0 1rem 2rem;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .ia-preview-card {
+        padding: 1.5rem;
+    }
+    
+    .ia-info h3 {
+        font-size: 1.4rem;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-links {
+        justify-content: center;
+    }
+    
+    .graph-bars {
+        gap: 0.3rem;
+    }
+    
+    .bar {
+        width: 28px;
+    }
+    
+    .bar span {
+        font-size: 0.6rem;
+        top: -20px;
+    }
+    
+    .graph-labels span {
+        width: 28px;
+        font-size: 0.5rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .graph-bars {
+        gap: 0.2rem;
+    }
+    
+    .bar {
+        width: 22px;
+    }
+    
+    .graph-labels span {
+        width: 22px;
+        font-size: 0.45rem;
+    }
+    
+    .ia-features li {
+        font-size: 0.9rem;
+    }
+}
+
+/* ========== ANIMACIONES ADICIONALES ========== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.benefit-card, .testimonial-card, .product-card {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.product-card:nth-child(1) { animation-delay: 0.05s; }
+.product-card:nth-child(2) { animation-delay: 0.1s; }
+.product-card:nth-child(3) { animation-delay: 0.15s; }
+.product-card:nth-child(4) { animation-delay: 0.2s; }
+.product-card:nth-child(5) { animation-delay: 0.25s; }
+.product-card:nth-child(6) { animation-delay: 0.3s; }
+
+/* ========== SCROLLBAR PERSONALIZADA ========== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #84cc16;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #65a30d;
+}
+
+/* ========== CONTENEDOR GENERAL CENTRADO ========== */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    width: 100%;
+}
+
+/* ========== SECCIONES CENTRADAS ========== */
+.section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 2rem 0 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+    justify-content: flex-start;
+}
+
+/* ========== PRODUCTOS GRID - CENTRADO ========== */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+/* Asegurar que cada tarjeta ocupe su espacio correctamente */
+.product-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s;
+    box-shadow: var(--shadow);
+    width: 100%;
+}
+
+/* ========== GRID DE BENEFICIOS CENTRADO ========== */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* ========== GRID DE TESTIMONIOS CENTRADO ========== */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* ========== SECCIÓN DE IA PREVIEW CENTRADA ========== */
+.ia-preview-section {
+    margin: 3rem 0;
+    width: 100%;
+}
+
+.ia-preview-card {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    border-radius: 30px;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    color: white;
+    width: 100%;
+}
+
+/* ========== NEWSLETTER CENTRADA ========== */
+.newsletter-section {
+    margin: 3rem 0;
+    width: 100%;
+}
+
+.newsletter-card {
+    background: linear-gradient(135deg, #84cc16, #65a30d);
+    border-radius: 30px;
+    padding: 2.5rem;
+    text-align: center;
+    color: #0f172a;
+    width: 100%;
+}
+
+/* ========== FOOTER CENTRADO ========== */
+footer {
+    background: var(--footer-bg);
+    margin-top: 4rem;
+    padding: 2rem 2rem 1rem;
+    color: var(--footer-text);
+    width: 100%;
+}
+
+.footer-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+/* ========== RESPONSIVE ACTUALIZADO ========== */
+@media (max-width: 850px) {
+    .nav-container {
+        flex-direction: column;
+    }
+    
+    .search-input {
+        width: 150px;
+    }
+    
+    body {
+        padding-top: 130px;
+    }
+    
+    .ia-preview-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .graph-bars {
+        gap: 0.5rem;
+    }
+    
+    .bar {
+        width: 35px;
+    }
+    
+    .graph-labels span {
+        width: 35px;
+        font-size: 0.6rem;
+    }
+    
+    .newsletter-form input {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 550px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    
+    .product-card {
+        max-width: 100%;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .nav-links {
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .hero {
+        border-radius: 12px;
+        margin: 0 1rem 2rem;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .ia-preview-card {
+        padding: 1.5rem;
+    }
+    
+    .ia-info h3 {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+    
+    .ia-info p {
+        text-align: center;
+    }
+    
+    .ia-features {
+        text-align: center;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    
+    .benefit-card {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    
+    .testimonial-card {
+        width: 100%;
+        max-width: 320px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-links {
+        justify-content: center;
+    }
+    
+    .graph-bars {
+        gap: 0.3rem;
+    }
+    
+    .bar {
+        width: 28px;
+    }
+    
+    .bar span {
+        font-size: 0.6rem;
+        top: -20px;
+    }
+    
+    .graph-labels span {
+        width: 28px;
+        font-size: 0.5rem;
+    }
+}
+
+@media (min-width: 551px) and (max-width: 850px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 851px) and (max-width: 1100px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1101px) {
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ========== CORRECCIÓN EXTRA: CONTENEDORES INTERNOS ========== */
+.benefit-card, .testimonial-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1.8rem;
+    text-align: center;
+    transition: transform 0.2s;
+    width: 100%;
+}
+
+.benefit-card:hover, .testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+/* ========== GARANTIZAR QUE NO HAY DESBORDES ========== */
+body {
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}

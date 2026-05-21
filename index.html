@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Abarrotes | Predicción de Ventas con IA</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
+</head>
+<body>
+
+    <!-- ==================== NAVBAR GLASSMORPHISM ==================== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">🛒</div>
+                <span class="logo-text">Tienda Abarrotes</span>
+            </div>
+
+            <div class="search-wrapper">
+                <input type="text" class="search-input" placeholder="Buscar productos...">
+                <button class="search-btn">🔍 Buscar</button>
+            </div>
+
+            <div class="nav-links">
+                <a href="#">Inicio</a>
+                <a href="#">Productos</a>
+                <a href="#">Ofertas</a>
+                <a href="#">Predicción IA</a>
+                <a href="#">Dashboard</a>
+                <button class="cart-btn">🛒 <span class="cart-count">3</span></button>
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+   <!-- ==================== CARRUSEL HERO ==================== -->
+<div class="hero">
+    <div class="carousel" id="carousel">
+        <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=1280&h=540&fit=crop" class="carousel-slide active" alt="Ofertas especiales en abarrotes">
+        <img src="https://images.unsplash.com/photo-1556909114-44e9135c4f6a?w=1280&h=540&fit=crop" class="carousel-slide" alt="Productos frescos y de calidad">
+        <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=1280&h=540&fit=crop" class="carousel-slide" alt="Descuentos en limpieza">
+        <img src="https://images.unsplash.com/photo-1534723452862-4c874018d66d?w=1280&h=540&fit=crop" class="carousel-slide" alt="Abarrotes para tu negocio">
+    </div>
+</div>
+
+    <!-- ==================== SECCIÓN 1: OFERTAS ESPECIALES ==================== -->
+<h2 class="section-title">🔥 Ofertas Especiales</h2>
+<div class="product-grid">
+    <div class="product-card">
+        <div class="card-img">
+            <span class="offer-tag">OFERTA</span>
+            <img src="https://images.unsplash.com/photo-1586201375761-83865001e8ac?w=300&h=300&fit=crop" alt="Arroz Premium" loading="lazy">
+        </div>
+        <div class="card-content">
+            <div class="product-title">Arroz Premium 1kg</div>
+            <div class="product-desc">Grano largo, súper esponjoso, cosecha seleccionada.</div>
+            <div class="price">
+                <span class="old-price">$35.00</span>
+                <span class="discount-price">$25.00</span>
+            </div>
+            <button class="add-cart">➕ Agregar al Carrito</button>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <div class="card-img">
+            <span class="offer-tag">OFERTA</span>
+            <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=300&h=300&fit=crop" alt="Aceite de Oliva" loading="lazy">
+        </div>
+        <div class="card-content">
+            <div class="product-title">Aceite de Oliva Extra Virgen</div>
+            <div class="product-desc">500ml, primera extracción en frío.</div>
+            <div class="price">
+                <span class="old-price">$90.00</span>
+                <span class="discount-price">$65.00</span>
+            </div>
+            <button class="add-cart">➕ Agregar al Carrito</button>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <div class="card-img">
+            <span class="offer-tag">OFERTA</span>
+            <img src="https://images.unsplash.com/photo-1590779033100-9f60a05a013d?w=300&h=300&fit=crop" alt="Frijol Negro" loading="lazy">
+        </div>
+        <div class="card-content">
+            <div class="product-title">Frijol Negro 1kg</div>
+            <div class="product-desc">Alto en proteína y fibra, orgánico.</div>
+            <div class="price">
+                <span class="old-price">$28.00</span>
+                <span class="discount-price">$19.00</span>
+            </div>
+            <button class="add-cart">➕ Agregar al Carrito</button>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <div class="card-img">
+            <span class="offer-tag">OFERTA</span>
+            <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=300&h=300&fit=crop" alt="Café Molido" loading="lazy">
+        </div>
+        <div class="card-content">
+            <div class="product-title">Café Molido 250g</div>
+            <div class="product-desc">Origen Chiapas, tueste medio, aroma intenso.</div>
+            <div class="price">
+                <span class="old-price">$120.00</span>
+                <span class="discount-price">$89.00</span>
+            </div>
+            <button class="add-cart">➕ Agregar al Carrito</button>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECCIÓN 2: PRODUCTOS DE LIMPIEZA ==================== -->
+<h2 class="section-title">🧼 Productos de Limpieza</h2>
+<div class="product-grid">
+    <div class="product-card">
+        <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?w=300&h=300&fit=crop" alt="Cloro" loading="lazy">
+        </div>
+        <div class="card-content">
+            <div class="product-title">Cloro Desinfectante 1L</div>
+            <div class="product-desc">Elimina el 99.9% de bacterias y virus.</div>
+            <div class="price">$18.00</div>
+            <button class="add-cart">➕ Agregar</button>
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=300&h=300&fit=crop" alt="Trapeador" loading="lazy">
+        </div>
+        <div class="card-content">
+            <div class="product-title">Trapeador Giratorio</div>
+            <div class="product-desc">Mango largo, escurridor integrado, fácil secado.</div>
+            <div class="price">$210.00</div>
+            <button class="add-cart">➕ Agregar</button>
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1585515320310-259814577e1b?w=300&h=300&fit=crop" alt="Jabón Líquido" loading="lazy">
+        </div>
+        <div class="card-content">
+            <div class="product-title">Jabón Líquido Neutro</div>
+            <div class="product-desc">Fragancia suave, hipoalergénico.</div>
+            <div class="price">$32.00</div>
+            <button class="add-cart">➕ Agregar</button>
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1625314868143-20e93ce3ff33?w=300&h=300&fit=crop" alt="Esponjas" loading="lazy">
+        </div>
+        <div class="card-content">
+            <div class="product-title">Esponjas Multiusos x3</div>
+            <div class="product-desc">Doble cara, no rayan superficies.</div>
+            <div class="price">$15.00</div>
+            <button class="add-cart">➕ Agregar</button>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECCIÓN 3: MÁS VENDIDOS ==================== -->
+<h2 class="section-title">⭐ Más Vendidos</h2>
+<div class="product-grid">
+    <div class="product-card">
+        <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1563636619-e9143da7973b?w=300&h=300&fit=crop" alt="Leche" loading="lazy">
+        </div>
+        <div class="card-content">
+            <div class="product-title">Leche Entera 1L</div>
+            <div class="product-desc">Fuente de calcio y vitaminas A y D.</div>
+            <div class="price">$26.00</div>
+            <button class="add-cart">➕ Agregar</button>
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=300&h=300&fit=crop" alt="Harina" loading="lazy">
+        </div>
+        <div class="card-content">
+            <div class="product-title">Harina de Trigo 1kg</div>
+            <div class="product-desc">Para panadería casera y repostería.</div>
+            <div class="price">$22.00</div>
+            <button class="add-cart">➕ Agregar</button>
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=300&h=300&fit=crop" alt="Galletas" loading="lazy">
+        </div>
+        <div class="card-content">
+            <div class="product-title">Galletas Surtidas</div>
+            <div class="product-desc">Paquete 200g, variedad de sabores.</div>
+            <div class="price">$19.00</div>
+            <button class="add-cart">➕ Agregar</button>
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=300&h=300&fit=crop" alt="Refresco" loading="lazy">
+        </div>
+        <div class="card-content">
+            <div class="product-title">Refresco Cola 600ml</div>
+            <div class="product-desc">Bebida refrescante, ideal para acompañar comidas.</div>
+            <div class="price">$17.00</div>
+            <button class="add-cart">➕ Agregar</button>
+        </div>
+    </div>
+</div>
+
+        <!-- ==================== NUEVA SECCIÓN 4: PREDICCIÓN IA (VISTA PREVIA VISUAL) ==================== -->
+        <div class="ia-preview-section">
+            <h2 class="section-title">🤖 Predicción de Ventas con IA</h2>
+            <div class="ia-preview-card">
+                <div class="ia-info">
+                    <h3>Anticipa la demanda con Inteligencia Artificial</h3>
+                    <p>Nuestro sistema predictivo basado en <strong>Prophet (Meta)</strong> analiza tus ventas históricas, estacionalidad y tendencias para decirte cuánto venderás mañana, esta semana o el próximo mes.</p>
+                    <ul class="ia-features">
+                        <li>📈 Precisión del 85%+</li>
+                        <li>📅 Predicción a 7, 30 o 90 días</li>
+                        <li>🔄 Reentrenamiento automático semanal</li>
+                        <li>📊 Dashboard interactivo</li>
+                    </ul>
+                    <button class="ia-btn">Ir al Dashboard de Predicción →</button>
+                </div>
+                <div class="ia-graph-preview">
+                    <div class="fake-graph">
+                        <div class="graph-title">Predicción próximos 7 días</div>
+                        <div class="graph-bars">
+                            <div class="bar" style="height: 60px;"><span>142</span></div>
+                            <div class="bar" style="height: 55px;"><span>138</span></div>
+                            <div class="bar" style="height: 70px;"><span>156</span></div>
+                            <div class="bar" style="height: 85px;"><span>189</span></div>
+                            <div class="bar" style="height: 65px;"><span>145</span></div>
+                            <div class="bar" style="height: 48px;"><span>112</span></div>
+                            <div class="bar" style="height: 45px;"><span>108</span></div>
+                        </div>
+                        <div class="graph-labels">
+                            <span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== NUEVA SECCIÓN 5: BENEFICIOS / POR QUÉ ELEGIRNOS ==================== -->
+        <div class="benefits-section">
+            <h2 class="section-title">✨ ¿Por qué elegir Tienda Abarrotes?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚚</div>
+                    <h3>Envíos a todo el país</h3>
+                    <p>Entregas en 24-48 horas en zona metropolitana.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔒</div>
+                    <h3>Pago seguro</h3>
+                    <p>Tarjeta, transferencia o efectivo contra entrega.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤖</div>
+                    <h3>Predicción con IA</h3>
+                    <p>Anticipa tus compras y evita desabasto.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎁</div>
+                    <h3>Ofertas exclusivas</h3>
+                    <p>Descuentos semanales para clientes frecuentes.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== NUEVA SECCIÓN 6: TESTIMONIOS ==================== -->
+        <div class="testimonials-section">
+            <h2 class="section-title">💬 Lo que dicen nuestros clientes</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Excelente servicio, los productos llegan en perfecto estado. La predicción de IA me ayuda a planear mi negocio."</p>
+                    <div class="client">— Ana Martínez, Dueña de abarrotes</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Muy buena variedad y precios competitivos. El dashboard es súper útil para ver tendencias."</p>
+                    <div class="client">— Carlos López, Comerciante</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★☆</div>
+                    <p>"La IA predijo correctamente el aumento de ventas en diciembre. Increíble herramienta."</p>
+                    <div class="client">— Laura Gómez, Administradora</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== NUEVA SECCIÓN 7: NEWSLETTER ==================== -->
+        <div class="newsletter-section">
+            <div class="newsletter-card">
+                <h3>📧 Recibe ofertas y novedades</h3>
+                <p>Suscríbete y entérate primero de promociones y actualizaciones de IA.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Tu correo electrónico">
+                    <button>Suscribirme</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo" style="filter: brightness(0.8);">
+                <div class="logo-icon">🛒</div>
+                <span>Tienda Abarrotes</span>
+            </div>
+            <div class="footer-links">
+                <a href="#">Sobre nosotros</a>
+                <a href="#">Contacto</a>
+                <a href="#">Términos y condiciones</a>
+                <a href="#">Privacidad</a>
+                <a href="#">Predicción IA</a>
+                <a href="#">Blog</a>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2025 Tienda Abarrotes - Predicción de Ventas con Inteligencia Artificial
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
